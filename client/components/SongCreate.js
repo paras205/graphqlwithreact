@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
+import { songQuery } from "../queries/fetchSongs";
 
 class SongCreate extends Component {
 	constructor(props) {
@@ -14,6 +15,7 @@ class SongCreate extends Component {
 				variables: {
 					title: this.state.title,
 				},
+				refetchQueries: [{ query: songQuery }],
 			})
 			.then((res) => console.log(res));
 	}
